@@ -11,7 +11,7 @@ from mrjob.job import MRJob
 
 class LogProcessor(MRJob):
     def mapper(self, _, line):
-        yield line[:14], 1
+        yield line[:15], 1
 
     def reducer(self, key, values):
         yield key, sum(values)
