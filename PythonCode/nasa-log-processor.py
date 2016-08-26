@@ -1,3 +1,10 @@
+"""
+Author: Cyrus M Vahid
+This is the equivalent of the map reduce job from chapter 3 that processes a NASA log.
+To run it run $ python3 nasa-log-processor.py Data/NASA_access_log_Jul95.log
+"""
+
+
 from mrjob.job import MRJob
 import re
 
@@ -5,7 +12,6 @@ class LogAnalyzer(MRJob):
 
     def mapper(self, _, line):
         pattern = '^(\S+) (\S+) (\S+) \[([\w:/]+\s[+\-]\d{4})\] "(.+?)" (\d{3}) (\S+)'
-        file = '/Users/cyrusmv/PycharmProjects/programemr-book/PythonCode/Data/NASA_access_log_Jul95.log'
         p = re.compile(pattern)
         m = p.match(line)
         if m:
